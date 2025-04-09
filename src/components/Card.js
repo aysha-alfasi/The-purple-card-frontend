@@ -40,9 +40,9 @@ const Card = ({ title, content, id, onDelete, onEdit, onFinish, onView }) => {
         </div>
       </div>
       <div className="card-buttons">
-        <button onClick={() => onEdit(id)}>Edit</button>
-        <button onClick={() => onDelete(id)}>Delete</button>
-        <button onClick={() => onFinish(id)}>Finish</button>
+        <button className="first" onClick={() => onEdit(id)}>Edit</button>
+        <button className="second" onClick={() => onDelete(id)}>Delete</button>
+        <button className="third" onClick={() => onFinish(id)}>Finish</button>
       </div>
     </div>
   );
