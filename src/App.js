@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Card from "./components/Card";
 import Modal from "./components/Modal";
 import { Howl } from "howler";
-import "./App.css";
+import "./App.css"; 
 
 const btnSound = new Howl({
 src: ['/sounds/btn.mp3'],
@@ -68,6 +68,12 @@ function App() {
   return (
     <div className="App">
       <h1>The Purple Card</h1>
+      <h2>Extract ideas from your mind to the world</h2>
+      <div className="circles">
+      <div className="circle1"></div>
+      <div className="circle2"></div>
+      <div className="circle3"></div>
+      </div>
       <button className="Add" onClick={openAddModal}> Add Idea</button>
       {modalVisible && (
         <Modal
