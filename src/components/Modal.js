@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Howl } from "howler";
 import "./Modal.css";
 
-
 const addSound = new Howl({
-src: ["/sounds/add.mp3"],
+  src: ["/sounds/add.mp3"],
 });
 
 const Modal = ({ isEditMode, isViewMode, card, onClose, onSave }) => {
@@ -39,66 +38,60 @@ const Modal = ({ isEditMode, isViewMode, card, onClose, onSave }) => {
     }
   };
 
+  const closeModal = (e) => {
+    if (e.target.classList.contains("modal-overlay")) {
+      onClose();
+    }
+  };
+
   return (
-    <div className="modal-overlay">
-      <div className="modal">
+    <div className="modal-overlay" onClick={closeModal}>
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
         {isViewMode ? (
           <>
             <h2>{card.title}</h2>
             <h4>{card.about}</h4>
             <p>{card.content}</p>
           </>
-        ) : isEditMode ? (
-          <>
-          <h2>Extract the Idea</h2>
-            <input
-              type="text"
-              name="title"
-              placeholder="Title"
-              value={newCard.title}
-              onChange={handleInputChange}
-            />
-            <textarea
-              name="about"
-              placeholder="About"
-              value={newCard.about}
-              onChange={handleInputChange}
-            />
-            <textarea
-              name="content"
-              placeholder="Content"
-              value={newCard.content}
-              onChange={handleInputChange}
-            />
-            <button onClick={handleSave}>Save</button>
-          </>
         ) : (
-          <>
-            <input
-              type="text"
-              name="title"
-              placeholder="Title"
-              value={newCard.title}
-              onChange={handleInputChange}
-            />
-            <textarea
-              name="about"
-              placeholder="About"
-              value={newCard.about}
-              onChange={handleInputChange}
-            />
-            <textarea
-              name="content"
-              placeholder="Content"
-              value={newCard.content}
-              onChange={handleInputChange}
-            />
-            <button onClick={handleSave}>Add</button>
-          </>
+          isEditMode && (
+            <>
+              <h2>Extract the Idea</h2>
+              <input
+                type="text"
+                name="title"
+                placeholder="Title"
+                value={newCard.title}
+                onChange={handleInputChange}
+              />
+              <textarea
+                name="about"
+                placeholder="About"
+                value={newCard.about}
+                onChange={handleInputChange}
+              />
+              <textarea
+                name="content"
+                placeholder="Content"
+                value={newCard.content}
+                onChange={handleInputChange}
+              />
+              <div className="edit-modal-btns">
+                <button className="save" onClick={handleSave}>
+                  Save
+                </button>
+                <button className="close-btn" onClick={onClose}>
+                  Close
+                </button>
+              </div>
+            </>
+          )
         )}
-        <button className="close-btn" onClick={onClose}>
-          Close
-        </button>
+        {!isEditMode && (
+          <button className="close-btn" onClick={onClose}>
+            Close
+          </button>
+        )}
       </div>
     </div>
   );

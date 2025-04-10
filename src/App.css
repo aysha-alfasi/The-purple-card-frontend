@@ -1,5 +1,6 @@
 body {
   background-color: #f6ecff;
+  font-family: "Itim";
 }
 
 .App {
@@ -30,17 +31,17 @@ h2 {
   align-items: center;
   text-align: center;
   margin-bottom: 25px;
-  gap: 20px;
+  gap: 15px;
 }
 
 .circle1,
 .circle2,
 .circle3 {
   border-radius: 50%;
-  border: solid 1px black;
+  border: solid 0.5px black;
   width: 15px;
   height: 15px;
-  animation: pulse 1.5s infinite ease-in-out;
+  animation: pulseFade 1.5s infinite ease-in-out;
 }
 
 .circle1 {
@@ -50,26 +51,25 @@ h2 {
 
 .circle2 {
   background-color: #ffc7ea;
-  animation-delay: 0.2s;
+  animation-delay: 0.3s;
 }
 
 .circle3 {
   background-color: #caedff;
-  animation-delay: 0.4s;
+  animation-delay: 0.5s;
 }
 
-@keyframes pulse {
+@keyframes pulseFade {
   0% {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.5);
+    transform: scale(1.2);
   }
   100% {
     transform: scale(1);
   }
 }
-
 .Add {
   color: rgb(30, 29, 29);
   border: solid 1px black;
@@ -81,6 +81,9 @@ h2 {
   background-color: #fbf0b2;
   transition: transform 0.1s ease, box-shadow 0.1s ease,
     background-color 0.2s ease;
+  font-family: "Itim";
+  font-weight: 400;
+  font-size: 0.9rem;
 }
 .Add:hover {
   background-color: #fff8d2;
