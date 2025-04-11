@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Howl } from "howler";
+import Swal from 'sweetalert2';
 import "./Modal.css";
 
 const addSound = new Howl({
   src: ["/sounds/add.mp3"],
 });
 
-const Modal = ({ isEditMode, isViewMode, card, onClose, onSave }) => {
+const Modal = ({ isEditMode, isViewMode, card, onClose, onSave, id, onDelete, onEdit, onFinish }) => {
   const [newCard, setNewCard] = useState({
     title: "",
     about: "",
@@ -34,9 +35,19 @@ const Modal = ({ isEditMode, isViewMode, card, onClose, onSave }) => {
       onClose();
       addSound.play();
     } else {
-      alert("Please fill all");
+         Swal.fire({
+            text: "Please fill all the fields 😏",
+            icon: 'warning',
+            background: '#f3e5f5',
+            confirmButtonText: 'ok',
+            customClass: {
+              confirmButton: 'my-ok-button',
+              popup: 'small-alert',
+            },
+          });
     }
   };
+
 
   const closeModal = (e) => {
     if (e.target.classList.contains("modal-overlay")) {
@@ -50,7 +61,7 @@ const Modal = ({ isEditMode, isViewMode, card, onClose, onSave }) => {
         {isViewMode ? (
           <>
             <h2>{card.title}</h2>
-            <h4>{card.about}</h4>
+            <h4> Idea about: {card.about} ⭐</h4>
             <p>{card.content}</p>
           </>
         ) : (
@@ -70,7 +81,7 @@ const Modal = ({ isEditMode, isViewMode, card, onClose, onSave }) => {
                 value={newCard.about}
                 onChange={handleInputChange}
               />
-              <textarea
+              <textarea className="content"
                 name="content"
                 placeholder="Content"
                 value={newCard.content}

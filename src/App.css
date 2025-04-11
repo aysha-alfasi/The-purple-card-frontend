@@ -104,6 +104,74 @@ h2 {
   margin: 20px auto;
 }
 
+.my-confirm-btn, .my-cancel-btn, .my-ok-button {
+  color: rgb(30, 29, 29);
+  border: solid 1px black;
+  padding: 10px 10px;
+  width: 70px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  font-family: "Itim";
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+.my-confirm-btn {
+  background-color: #fbf0b2 !important;
+}
+
+.my-confirm-btn:hover {
+  background-color: #fff8d2 !important;
+  box-shadow: none !important;
+  filter: none !important;
+  filter: brightness(1) !important; 
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+
+.my-cancel-btn, .my-ok-button {
+  background-color: #ffc7fd !important;
+}
+
+.my-cancel-btn:hover, .my-ok-button:hover {
+  background-color: #ffc7fd !important;
+}
+
+
+.my-cancel-btn:hover, .my-confirm-btn:hover, .my-ok-button:hover, .swal2-confirm:hover {
+  opacity: 1 !important;
+  transform: scale(0.95);
+  box-shadow: none !important;
+  filter: none !important;
+  filter: brightness(1.1) !important;
+  box-shadow: none !important;
+}
+
+
+.my-cancel-btn:active,
+.my-ok-button:active {
+  background-color: #ffc7ea !important;
+  box-shadow: none !important; 
+  filter: none !important; 
+  transform: none !important;
+  filter: brightness(1.4) !important;
+
+}
+
+ .my-confirm-btn:active {
+  background-color: #fbf0b2 !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+  filter: brightness(1.3) !important;
+}
+
+.large-alert {
+  border-radius: 30px;
+}
+
+
 @media (max-width: 768px) {
   .cards-container {
     justify-content: center;

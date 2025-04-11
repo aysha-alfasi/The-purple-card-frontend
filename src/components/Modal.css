@@ -17,7 +17,8 @@
   padding: 30px;
   border-radius: 15px;
   width: 400px;
-  height: 550px;
+  height: auto;
+  min-height: 550px;
   max-width: 80%;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
@@ -33,22 +34,32 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  text-align: justify;
+  transition: transform 0.3s ease;
 }
 
+
+
 .modal h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 2rem;
+  margin-bottom: 5px;
   color: #333;
 }
 
 .modal h4 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: #7f8c8d;
+  font-size: 1.1rem;
+  margin-top: 15px;
+  color: #f0dfff;
+  border-radius: 50px;
+  width: auto;
+  padding: 10px;
+  background-color: #FF74B1;
+  font-weight: 200;
+
 }
 
 .modal p {
-  font-size: 16px;
+  font-size: 1.2rem;
   color: #333;
   line-height: 1.6;
 }
@@ -68,6 +79,17 @@
 .modal textarea:focus {
   border-color: hsl(298, 100%, 80%);
   outline: none;
+}
+
+.content {
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+  text-align: justify !important;
 }
 
 .edit-modal-btns {
@@ -100,6 +122,47 @@
   background-color: hsl(323, 100%, 93%);
   transform: scale(0.98);
 }
+
+.my-ok-button {
+  background-color: #ffc7fd !important;
+  color: rgb(30, 29, 29);
+  border: solid 1px black;
+  padding: 10px 10px;
+  width: 70px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  font-family: "Itim";
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+.my-ok-button:hover {
+  background-color: hsl(323, 100%, 93%) !important;
+  opacity: 1 !important;
+  transform: scale(0.95);
+  box-shadow: none !important;
+  filter: none !important;
+  filter: brightness(1.1) !important;
+  box-shadow: none !important;
+}
+
+.my-ok-button:active {
+  background-color: #ffc7ea !important;
+  box-shadow: none !important; 
+  filter: none !important; 
+  transform: none !important;
+  filter: brightness(1.4) !important;
+
+}
+
+.small-alert {
+  width: 400px !important;
+  padding: 20px !important; 
+  font-size: 20px !important;
+  border-radius: 35px;
+}
+
 
 @keyframes slideIn {
   0% {
