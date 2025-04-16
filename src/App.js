@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+// import { thepurplecard_backend } from "declarations/thepurplecard_backend";
 import Card from "./components/Card";
 import Modal from "./components/Modal";
 import { Howl } from "howler";
@@ -11,6 +12,17 @@ const btnSound = new Howl({
 const finishSound = new Howl({
   src: ["/sounds/finish.mp3"],
 });
+const addSound = new Howl({
+  src: ["/sounds/add.mp3"],
+});
+
+ const errSound2 = new Howl({
+    src: ["/sounds/err3.mp3"],
+  });
+
+  const errSound3 = new Howl({
+    src: ["/sounds/err1.mp3"],
+  });
 
 function App() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -18,6 +30,8 @@ function App() {
   const [isViewMode, setIsViewMode] = useState(false);
   const [currentCard, setCurrentCard] = useState(null);
   const [cards, setCards] = useState([]);
+  const [loading, setLoading] = useState(false);
+
 
   const openAddModal = () => {
     btnSound.play();
@@ -41,20 +55,165 @@ function App() {
     setModalVisible(true);
   };
 
-  const saveCard = (newCard) => {
+  const saveCard = async (newCard) => {
+    setLoading(true);
+  
     if (currentCard) {
-      setCards(
-        cards.map((card) =>
-          card.id === currentCard.id ? { ...newCard, id: currentCard.id } : card
-        )
-      );
+      Swal.fire({
+        title: 'Updating your card',
+        html: `
+          <div class="circles">
+            <div class="circle1"></div>
+            <div class="circle2"></div>
+            <div class="circle3"></div>
+          </div>`,
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        customClass: {
+          popup: 'loading-alert',
+          title: 'loading-title',
+        },
+      });
+  
+      try {
+        if (
+          newCard.title.trim() === currentCard.title.trim() &&
+          newCard.about.trim() === currentCard.about.trim() &&
+          newCard.content.trim() === currentCard.content.trim()
+        ) {
+          errSound2.play();
+          Swal.fire({
+            icon: 'info',
+            title: '<span class="fun">🤭</span>',
+            text: "You didn't modify anything!",
+            background: '#fdf3ff',
+            customClass: {
+              confirmButton: 'my-confirm-btn',
+              popup: 'small-alert',
+              title: 'swal-custom-title',
+              htmlContainer: 'swal-custom-text',
+            },
+          });
+          return;
+        }
+  
+        // تحديث البطاقة داخل المصفوفة المحلية
+        const updatedCards = cards.map(card =>
+          card.id === currentCard.id ? { ...card, ...newCard } : card
+        );
+  
+        setCards(updatedCards);
+        setLoading(false);
+        Swal.fire({
+          title: 'Updated!',
+          text: 'The card has been successfully updated.',
+          icon: 'success',
+          background: '#f3e5f5',
+          customClass: {
+            confirmButton: 'my-confirm-btn',
+            popup: 'large-alert',
+            title: 'swal-custom-title',
+            htmlContainer: 'swal-custom-text',
+          },
+        });
+      } catch (error) {
+        console.error("Failed to update card ❌", error);
+        errSound2.play();
+        Swal.fire({
+          title: '<span class="shaky-emoji">🥺</span>',
+          text: "Hmm... something didn’t go as planned. Wanna give it another shot? 🌸",
+          confirmButtonText: 'ok',
+          background: '#f3e5f5',
+          customClass: {
+            confirmButton: 'my-confirm-btn',
+            title: 'swal-custom-title',
+            htmlContainer: 'swal-custom-text',
+            popup: 'large-alert',
+          },
+        });
+      } finally {
+        setLoading(false);
+      }
     } else {
-      setCards([...cards, { ...newCard, id: Date.now() }]);
+      Swal.fire({
+        title: 'Adding your card',
+        html: `
+          <div class="circles">
+            <div class="circle1"></div>
+            <div class="circle2"></div>
+            <div class="circle3"></div>
+          </div>`,
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        customClass: {
+          popup: 'loading-alert',
+          title: 'loading-title',
+        },
+      });
+  
+      try {
+        const newCardWithId = {
+          ...newCard,
+          id: Date.now().toString(), // نولد ID عشوائي بسيط
+        };
+  
+        const updatedCards = [...cards, newCardWithId];
+        setCards(updatedCards);
+        Swal.close();
+        addSound.play();
+      } catch (error) {
+        console.error("Failed to create card ❌", error);
+        errSound2.play();
+        Swal.fire({
+          title: '<span class="shaky-emoji">🥺</span>',
+          text: "Hmm... something didn’t go as planned. Wanna give it another shot? 🌸",
+          confirmButtonText: 'ok',
+          background: '#f3e5f5',
+          customClass: {
+            confirmButton: 'my-confirm-btn',
+            title: 'swal-custom-title',
+            htmlContainer: 'swal-custom-text',
+            popup: 'large-alert',
+          },
+        });
+      } finally {
+        setLoading(false);
+      }
     }
+  
     closeModal();
   };
+  
+  useEffect(() => {
+    fetchData();
+  }, []);
 
+  async function fetchData() {
+    const cardsArray = [
+      {
+        id: '1',
+        title: 'Welcome!',
+        about: 'Testing',
+        content: 'You can edit or delete this card. 🌸',
+      },
+      {
+        id: '2',
+        title: 'Flower drinks shop!',
+        about: 'Flowers, well-being',
+        content: '🧠 Concept Overview:A modern café that serves natural drinks infused with edible flowers, such as lavender, hibiscus, jasmine, butterfly pea flower, and Damask rose—blending healthy taste with visual elegance. Each drink is a sensory experience, full of calm, natural colors, and floral aroma. Drink Menu: Iced Butterfly Pea Flower Tea (magically changes color with lemon 🍋💙💜) Vegan Lavender Latte (with oat milk and a sprinkle of dried flowers) Hibiscus Tea with Mint and Honey Chilled Damask Rose Elixir Chamomile  and Chrysanthemum Calm Cocktail Sparkling Jasmine Lemonade',
+      },
+      {
+        id: '3',
+        title: 'Feelink',
+        about: 'Smart devices',
+        content: "Feelink is a small smart device worn as a wristband or pendant, allowing people to share beautiful emotions—like joy, nostalgia, love, gratitude, or calm—with others anywhere in the world, without using words. The user selects an emotion they want to send (like “I miss you”, “I'm proud of you”, “I'm at peace”). The device translates this emotion into a unique gentle vibration, color glow, and soft tone or melody. The receiver’s Feelink device delivers the same emotional experience through light, touch, and sound.For example:The emotion 'nostalgia' glows in soft violet, with a light pulse and a breeze-like tone.",
+      },
+    ];
+    setCards(cardsArray);
+  }
   const deleteCard = (id) => {
+    errSound3.play();
+  
     Swal.fire({
       title: 'Are you sure?',
       text: "You will not be able to retrieve this card after deletion!",
@@ -67,37 +226,78 @@ function App() {
         confirmButton: 'my-confirm-btn',
         cancelButton: 'my-cancel-btn',
         popup: 'large-alert',
-      }
-    }).then((result) => {
+        title: 'swal-custom-title',
+        htmlContainer: 'swal-custom-text',
+      },
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        const updatedCards = cards.filter((card) => card.id !== id);
-        setCards(updatedCards);
-  
         Swal.fire({
-          title: 'Deleted!',
-          text: 'The card has been successfully deleted.',
-          icon: 'success',
-          background: '#f3e5f5',
-          confirmButtonText: 'OK',
+          title: 'Deleting your card',
+          html: `
+            <div class="circles">
+              <div class="circle1"></div>
+              <div class="circle2"></div>
+              <div class="circle3"></div>
+            </div>`,
+          showConfirmButton: false,
+          allowOutsideClick: false,
           customClass: {
-            confirmButton: 'my-ok-button',
-            popup: 'large-alert',
-          }
+            popup: 'loading-alert',
+            title: 'loading-title',
+          },
         });
+  
+        try {
+    
+          const updatedCards = cards.filter((card) => card.id !== id);
+          setCards(updatedCards);
+  
+          Swal.fire({
+            title: 'Deleted!',
+            text: 'The card has been successfully deleted.',
+            icon: 'success',
+            background: '#f3e5f5',
+            confirmButtonText: 'OK',
+            customClass: {
+              confirmButton: 'my-ok-button',
+              popup: 'large-alert',
+              title: 'swal-custom-title',
+              htmlContainer: 'swal-custom-text',
+            },
+          });
+        } catch (error) {
+          console.error("Error deleting card ❌", error);
+          errSound2.play();
+          Swal.fire({
+            title: '<span class="shaky-emoji">🥺</span>',
+            text: "Hmm... something didn’t go as planned. Wanna give it another shot? 🌸",
+            confirmButtonText: 'ok',
+            background: '#f3e5f5',
+            customClass: {
+              confirmButton: 'my-confirm-btn',
+              title: 'swal-custom-title',
+              htmlContainer: 'swal-custom-text',
+              popup: 'large-alert',
+            },
+          });
+        }
       }
     });
   };
+  
 
   const handleFinish = (id) => {
     finishSound.play();
     Swal.fire({
-      title: "This idea is now a reality🌟",
+      title: "<span class='finish-str'>🌟</span> <br> From dreams to reality!",
       text: `Card number ${id} has been terminated.`,
-      icon: 'success',
       confirmButtonText: 'ok',
+      background: '#322653',
       customClass: {
         confirmButton: 'my-ok-button',
         popup: 'large-alert',
+        title: 'finish-title',
+            htmlContainer: 'finish-text',
       },
     });
   };
@@ -119,6 +319,8 @@ function App() {
         {" "}
         Add Idea
       </button>
+{cards.length === 0 && <p className="empty">No cards yet. Add the first idea!</p>}
+
       {modalVisible && (
         <Modal
           isEditMode={isEditMode}

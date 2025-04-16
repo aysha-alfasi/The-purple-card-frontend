@@ -2,13 +2,20 @@
   position: fixed;
   top: 0;
   left: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* للسلاسة في أجهزة Apple */
   width: 100%;
-  height: 100%;
+  min-height: 100dvh; /* dynamic viewport height */
+overflow-y: auto;
+-webkit-overflow-scrolling: touch;
   background-color: rgba(30, 30, 30, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  min-height: 100dvh; /* تعويض الشاشة بالكامل بما فيها المساحات الآمنة */
+  box-sizing: border-box;
+  padding: 5vh 0;
   animation: fadeIn 0.3s ease-in; /* Animation for modal overlay */
 }
 
@@ -18,6 +25,10 @@
   border-radius: 15px;
   width: 400px;
   height: auto;
+  max-height: 90vh;
+  overflow-y: auto; 
+  padding: 20px;
+  box-sizing: border-box;
   min-height: 550px;
   max-width: 80%;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -25,7 +36,6 @@
   transform: translateY(-50px);
   animation: slideIn 0.5s ease-out forwards;
   text-align: center;
-  overflow: hidden;
   word-wrap: break-word;
   white-space: pre-wrap;
   text-align: center;
@@ -34,16 +44,15 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  text-align: justify;
   transition: transform 0.3s ease;
 }
 
 
 
 .modal h2 {
-  font-size: 2rem;
-  margin-bottom: 5px;
-  color: #333;
+  font-size: 2.2rem;
+  margin-bottom: 35px;
+  color: #2b2828;
 }
 
 .modal h4 {
@@ -64,8 +73,30 @@
   line-height: 1.6;
 }
 
-.modal input,
-.modal textarea {
+
+
+input {
+  height: 30px;
+}
+
+.modal input:focus,
+.modal textarea:focus {
+  border-color: hsl(298, 100%, 80%);
+  outline: none;
+}
+
+.field {
+  position: relative;
+  width: 90%;
+  margin-bottom: 20px;
+}
+
+.field input,
+.field textarea {
+  border: 1px solid #f8c5ff;
+  outline: none;
+  font-family: "Itim";
+  background: #fff;
   width: 90%;
   padding: 10px 12px;
   margin-bottom: 12px;
@@ -75,14 +106,47 @@
   transition: border 0.2s;
 }
 
-.modal input:focus,
-.modal textarea:focus {
-  border-color: hsl(298, 100%, 80%);
-  outline: none;
+.field label {
+  position: absolute;
+  top: 12px;
+  left: 20px;
+  color: #715b7a;
+  font-size: 1rem;
+  pointer-events: none;
+  transition: 0.2s ease all;
+  font-family: "Itim";
+  font-weight: 100;
 }
 
+.required-star {
+ 
+  transition: opacity 0.2s ease;
+}
+
+.field input:focus + label,
+.field input:not(:placeholder-shown) + label,
+.field textarea:focus + label,
+.field textarea:not(:placeholder-shown) + label {
+  top: -25px;
+  left: 12px;
+  font-size: 1.1rem;
+  background-color: #d8b4f8;
+  padding: 0 6px;
+  border-radius: 4px;
+  color: #393838;
+  
+}
+
+.field input:focus + label .required-star,
+.field input:not(:placeholder-shown) + label .required-star,
+.field textarea:focus + label .required-star,
+.field textarea:not(:placeholder-shown) + label .required-star {
+  opacity: 0;
+}
+
+
 .content {
-  width: 100%;
+  width: 90%;
   height: 200px;
   padding: 10px;
   font-size: 16px;
@@ -243,3 +307,4 @@
     padding: 6px 12px;
   }
 }
+
