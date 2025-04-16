@@ -200,13 +200,13 @@ function App() {
         id: '2',
         title: 'Flower drinks shop!',
         about: 'Flowers, well-being',
-        content: '🧠 Concept Overview:A modern café that serves natural drinks infused with edible flowers, such as lavender, hibiscus, jasmine, butterfly pea flower, and Damask rose—blending healthy taste with visual elegance. Each drink is a sensory experience, full of calm, natural colors, and floral aroma. Drink Menu: Iced Butterfly Pea Flower Tea (magically changes color with lemon 🍋💙💜) Vegan Lavender Latte (with oat milk and a sprinkle of dried flowers) Hibiscus Tea with Mint and Honey Chilled Damask Rose Elixir Chamomile  and Chrysanthemum Calm Cocktail Sparkling Jasmine Lemonade',
+        content: 'Concept Overview:A modern café that serves natural drinks infused with edible flowers, such as lavender, hibiscus, jasmine, butterfly pea flower, and Damask rose—blending healthy taste with visual elegance. Each drink is a sensory experience, full of calm, natural colors, and floral aroma. Drink Menu: Iced Butterfly Pea Flower Tea, magically changes color with lemon 🍋💙💜',
       },
       {
         id: '3',
         title: 'Feelink',
         about: 'Smart devices',
-        content: "Feelink is a small smart device worn as a wristband or pendant, allowing people to share beautiful emotions—like joy, nostalgia, love, gratitude, or calm—with others anywhere in the world, without using words. The user selects an emotion they want to send (like “I miss you”, “I'm proud of you”, “I'm at peace”). The device translates this emotion into a unique gentle vibration, color glow, and soft tone or melody. The receiver’s Feelink device delivers the same emotional experience through light, touch, and sound.For example:The emotion 'nostalgia' glows in soft violet, with a light pulse and a breeze-like tone.",
+        content: "Feelink is a small smart device worn as a wristband or pendant, allowing people to share beautiful emotions—like joy, nostalgia, love. The device translates this emotion into a unique gentle vibration, color glow, and soft tone or melody.",
       },
     ];
     setCards(cardsArray);
