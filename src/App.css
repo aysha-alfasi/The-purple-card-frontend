@@ -106,7 +106,7 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: flex-start;
+  justify-content: center;
   margin: 50px auto;
 }
 

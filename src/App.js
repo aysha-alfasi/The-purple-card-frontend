@@ -208,6 +208,25 @@ function App() {
         about: 'Smart devices',
         content: "Feelink is a small smart device worn as a wristband or pendant, allowing people to share beautiful emotions—like joy, nostalgia, love. The device translates this emotion into a unique gentle vibration, color glow, and soft tone or melody.🤍",
       },
+      {
+        id: '4',
+        title: 'Welcome!',
+        about: 'Testing',
+        content: 'You can edit or delete this card. 🌸',
+      },
+      {
+        id: '5',
+        title: 'Flower drinks!',
+        about: 'Flowers, well-being',
+        content: 'A modern cafee that serves natural drinks infused with edible flowers, such as lavender, hibiscus, jasmine, butterfly pea flower, and Damask rose—blending healthy taste with visual elegance. Each drink is a sensory experience, full of calm, natural colors, and floral aroma.💙🌸💜',
+      },
+      {
+        id: '6',
+        title: 'Feelink 💗',
+        about: 'Smart devices',
+        content: "Feelink is a small smart device worn as a wristband or pendant, allowing people to share beautiful emotions—like joy, nostalgia, love. The device translates this emotion into a unique gentle vibration, color glow, and soft tone or melody.🤍",
+      },
+      
     ];
     setCards(cardsArray);
   }
