@@ -1,6 +1,5 @@
 body {
   background-color: #f6ecff;
-  font-family: "Itim";
 }
 
 html, body {
@@ -108,7 +107,7 @@ h2 {
   flex-wrap: wrap;
   gap: 20px;
   justify-content: flex-start;
-  margin: 20px auto;
+  margin: 50px auto;
 }
 
 .my-confirm-btn, .my-cancel-btn, .my-ok-button {
@@ -181,14 +180,14 @@ h2 {
 .loading-title {
 margin-top: 20px;
 font-size: 1rem;
-font-family: 'Inter', sans-serif;
+font-family: 'Nunito', sans-serif;
 color: #383636;
 
 }
 
 .empty {
   margin-top: 5%;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Nunito', sans-serif;
   color: #585858;
 }
 
@@ -220,11 +219,12 @@ font-size: 1.2rem;
 color: #3d3b3b;
 position: relative;
 bottom: 10px;
-font-family: 'Inter', sans-serif; }
+font-family: 'Nunito', sans-serif;
+}
 
 .swal-custom-title {
   color: #333131 !important;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 2.3rem;
 }
 
@@ -247,7 +247,7 @@ font-family: 'Inter', sans-serif; }
 
 .finish-title, .finish-text {
   color: #fed6ff;
-  font-family: 'Inter', sans-serif;  
+  font-family: 'Nunito', sans-serif;
 }
 
 .finish-title {

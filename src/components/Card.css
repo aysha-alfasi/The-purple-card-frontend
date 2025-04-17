@@ -109,8 +109,9 @@
   width: 100%;
   padding: 0;
   font-weight: 100;
-  color: rgb(61, 42, 68);
-  
+  color: rgb(52, 52, 53);
+  font-family: "Itim";
+  font-size: 1.2rem;
 }
 
 .card-back {
@@ -126,6 +127,9 @@
   width: 100%;
   padding: 0;
   position: relative;
+  font-weight: 100;
+  font-family: "Itim";
+  font-size: 1.2rem;
 }
 
 .card-back button {

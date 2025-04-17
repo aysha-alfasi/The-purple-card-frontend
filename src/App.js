@@ -198,15 +198,15 @@ function App() {
       },
       {
         id: '2',
-        title: 'Flower drinks shop!',
+        title: 'Flower drinks!',
         about: 'Flowers, well-being',
-        content: 'Concept Overview:A modern café that serves natural drinks infused with edible flowers, such as lavender, hibiscus, jasmine, butterfly pea flower, and Damask rose—blending healthy taste with visual elegance. Each drink is a sensory experience, full of calm, natural colors, and floral aroma. Drink Menu: Iced Butterfly Pea Flower Tea, magically changes color with lemon 🍋💙💜',
+        content: 'A modern cafee that serves natural drinks infused with edible flowers, such as lavender, hibiscus, jasmine, butterfly pea flower, and Damask rose—blending healthy taste with visual elegance. Each drink is a sensory experience, full of calm, natural colors, and floral aroma.💙🌸💜',
       },
       {
         id: '3',
-        title: 'Feelink',
+        title: 'Feelink 💗',
         about: 'Smart devices',
-        content: "Feelink is a small smart device worn as a wristband or pendant, allowing people to share beautiful emotions—like joy, nostalgia, love. The device translates this emotion into a unique gentle vibration, color glow, and soft tone or melody.",
+        content: "Feelink is a small smart device worn as a wristband or pendant, allowing people to share beautiful emotions—like joy, nostalgia, love. The device translates this emotion into a unique gentle vibration, color glow, and soft tone or melody.🤍",
       },
     ];
     setCards(cardsArray);

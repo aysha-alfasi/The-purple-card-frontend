@@ -64,6 +64,7 @@ overflow-y: auto;
   padding: 10px;
   background-color: #FF74B1;
   font-weight: 200;
+  font-family: "Itim";
 
 }
 
@@ -71,6 +72,9 @@ overflow-y: auto;
   font-size: 1.2rem;
   color: #333;
   line-height: 1.6;
+  text-align: justify;
+  font-family: 'Nunito', sans-serif;
+
 }
 
 
@@ -95,7 +99,7 @@ input {
 .field textarea {
   border: 1px solid #f8c5ff;
   outline: none;
-  font-family: "Itim";
+  font-family: 'Nunito', sans-serif;
   background: #fff;
   width: 90%;
   padding: 10px 12px;
