@@ -75,6 +75,7 @@ const Modal = ({ isEditMode, isViewMode, card, onClose, onSave }) => {
             <>
 <div className="field">
   <input
+  className="title"
     type="text"
     name="title"
     id="title"
@@ -86,7 +87,8 @@ const Modal = ({ isEditMode, isViewMode, card, onClose, onSave }) => {
 </div>
 
 <div className="field">
-  <textarea
+  <input
+  className="about"
     name="about"
     id="about"
     placeholder=" "

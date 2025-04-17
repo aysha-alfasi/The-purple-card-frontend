@@ -312,3 +312,27 @@ input {
   }
 }
 
+@media (max-width: 400px) {
+  
+.field input:focus + label,
+.field input:not(:placeholder-shown) + label,
+.field textarea:focus + label,
+.field textarea:not(:placeholder-shown) + label {
+  top: -28px;
+}
+
+.field .title {
+  margin-bottom: 23px;
+}
+.field .about {
+  margin-bottom: 30px;
+}
+
+.field textarea:focus + label,
+.field textarea:not(:placeholder-shown) + label {
+  top: -33px;
+  height: 30px;
+  right: 20px;
+}
+
+}
