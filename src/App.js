@@ -30,7 +30,7 @@ function App() {
   const [isViewMode, setIsViewMode] = useState(false);
   const [currentCard, setCurrentCard] = useState(null);
   const [cards, setCards] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [, setLoading] = useState(false);
 
 
   const openAddModal = () => {
@@ -97,7 +97,7 @@ function App() {
           return;
         }
   
-        // تحديث البطاقة داخل المصفوفة المحلية
+        // Update the card inside the local array
         const updatedCards = cards.map(card =>
           card.id === currentCard.id ? { ...card, ...newCard } : card
         );
@@ -154,10 +154,10 @@ function App() {
       try {
         const newCardWithId = {
           ...newCard,
-          id: Date.now().toString(), // نولد ID عشوائي بسيط
+          id: Date.now().toString(), // Generate a temporary unique ID
         };
   
-        const updatedCards = [...cards, newCardWithId];
+        const updatedCards = [newCardWithId, ...cards];
         setCards(updatedCards);
         Swal.close();
         addSound.play();
